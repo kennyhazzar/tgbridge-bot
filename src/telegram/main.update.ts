@@ -6,6 +6,7 @@ export class MainUpdate {
   @Use()
   async proceed(ctx: Context, next: () => Promise<void>) {
     console.log(ctx.chat);
+    console.log(ctx.message);
 
     next();
   }
