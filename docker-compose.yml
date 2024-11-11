@@ -1,0 +1,9 @@
+version: '3.8'
+
+services:
+  tgbridge-bot:
+    build: .
+    container_name: tgbridge-bot
+    ports:
+      - "3004:3004"
+    restart: always
