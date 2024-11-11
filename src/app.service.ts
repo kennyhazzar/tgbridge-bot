@@ -12,14 +12,37 @@ export class AppService {
 
   async handleListener(payload: Record<string, any>) {
     console.log({ payload });
+    const { chatId, threadId } = this.botConfig;
 
     if (payload.event === 'join') {
-      const { chatId, threadId } = this.botConfig;
-
       try {
         await this.bot.telegram.sendMessage(
           +chatId,
           `Игрок ${payload?.player || ''} зашел на сервер!`,
+          {
+            message_thread_id: +threadId,
+          },
+        );
+      } catch (error) {
+        console.log(error);
+      }
+    } else if (payload.event === 'death') {
+      try {
+        await this.bot.telegram.sendMessage(
+          +chatId,
+          `Игрок ${payload?.player || ''} умер!`,
+          {
+            message_thread_id: +threadId,
+          },
+        );
+      } catch (error) {
+        console.log(error);
+      }
+    } else if (payload.event === 'quit') {
+      try {
+        await this.bot.telegram.sendMessage(
+          +chatId,
+          `Игрок ${payload?.player || ''} вышел с сервера!`,
           {
             message_thread_id: +threadId,
           },
