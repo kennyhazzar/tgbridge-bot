@@ -5,10 +5,6 @@ import { Context } from 'telegraf';
 export class MainUpdate {
   @Use()
   async proceed(ctx: Context, next: () => Promise<void>) {
-    if (ctx.chat.type !== 'private') {
-      return;
-    }
-
     console.log(ctx.chat);
 
     next();
