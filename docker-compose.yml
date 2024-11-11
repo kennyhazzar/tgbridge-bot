@@ -4,6 +4,8 @@ services:
   tgbridge-bot:
     build: .
     container_name: tgbridge-bot
+    env_file:
+      - .env
     ports:
       - "3004:3004"
     restart: always
