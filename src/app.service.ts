@@ -18,10 +18,10 @@ export class AppService {
 
       try {
         await this.bot.telegram.sendMessage(
-          chatId,
+          +chatId,
           `Игрок ${payload?.player || ''} зашел на сервер!`,
           {
-            message_thread_id: threadId,
+            message_thread_id: +threadId,
           },
         );
       } catch (error) {
