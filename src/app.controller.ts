@@ -8,7 +8,8 @@ export class AppController {
   @Post()
   handleListener(@Body() payload: Record<string, any>) {
     setImmediate(() => {
-      this.appService.handleListener(payload);
+      // this.appService.handleListener(payload);
+      console.log({ payload });
     });
   }
 }
